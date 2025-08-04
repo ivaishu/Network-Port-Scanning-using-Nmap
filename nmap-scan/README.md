@@ -86,4 +86,27 @@ nmap -sS 10.0.2.0/24 -oN scan-results.txt
 | **10.0.2.0/24** |	Target IP Range – Scans all IPs from 10.0.2.1 to 10.0.2.254, which is the typical subnet used in a VirtualBox NAT Network. |
 | **-oN scan-results.txt** |	Normal Output Format – Saves the scan results in a readable .txt file. Ideal for reviewing or including in reports and GitHub repositories. |
 
+### 📶 Optional: Setup to Capture Traffic Using Wireshark
+
+Wireshark helps visualize packets sent during the Nmap scan.
+
+#### 🛠 Quick Steps:
+
+- **Launch Wireshark with root**:
+    ```bash
+   sudo wireshark
+   ```
+- **Select the active interface (e.g., eth0, ens33). Check with**:
+
+- **(Optional) Set a capture filter:**
+     -TCP only: tcp or SYN packets: tcp[tcpflags] & tcp-syn != 0
+  
+- **Start capture (blue shark fin icon).**
+
+- **In another terminal, run:**
+```bash
+nmap -sS 10.0.2.0/24
+```
+- **Stop capture (red square) and save as:**
+   -wireshark-capture.pcapng
 
