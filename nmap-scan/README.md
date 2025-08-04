@@ -66,8 +66,10 @@ Using a NAT network ensures the following privacy and security benefits when upl
 - 🔐 **Limits exposure**  
   - Even if you accidentally run aggressive scans or exploits, your real system is unaffected
 
+---
 
 ## 🧪 Commands Used
+
 ### 🔎 Step 1: Find Local IP Range
 ```bash
 ifconfig
@@ -109,4 +111,29 @@ nmap -sS 10.0.2.0/24
 ```
 - **Stop capture (red square) and save as:**
    -wireshark-capture.pcapng
+
+---
+## 📄 Output Summary
+
+The TCP SYN scan (`nmap -sS 10.0.2.0/24`) was executed across the NAT network in Oracle VirtualBox, targeting two virtual machines:
+
+---
+
+### 🖥️ Debian VM – Detected Open Ports and Services:
+
+| Port | Service         | Description & Impact |
+|------|------------------|-----------------------|
+| `21/tcp` | FTP              | File Transfer Protocol — commonly used for file uploads. If anonymous access or weak credentials are enabled, it could lead to unauthorized data access or server compromise. |
+| `80/tcp` | HTTP             | Web server — may expose web applications or configuration pages. Outdated or unpatched web apps on this port can be vulnerable to exploits like XSS or RCE. |
+| `2222/tcp` | EtherNet/IP-1    | Industrial protocol (often used in SCADA/ICS). If unintentionally exposed, it may allow interaction with automation hardware or simulation services. |
+
+> 🔐 **Security Note:** These services should be monitored, patched, and access-controlled — especially if exposed beyond the virtual lab. FTP in particular is insecure by default as it transmits data (including credentials) in plain text.
+
+---
+
+### 🖥️ Windows 7 VM – Scan Result:
+
+- **All 1000 default TCP ports returned:** `closed`
+- Indicates no services were listening or reachable on the common ports scanned.
+- Could be due to firewall settings or minimal service configuration.
 
