@@ -148,4 +148,5 @@ This task demonstrated fundamental network reconnaissance skills using Nmap and 
 - **Wireshark** validated the behavior of a SYN scan by capturing SYN, SYN-ACK, and RST packets — showcasing the low-noise nature of half-open scanning.
 - Using a **NAT Network** ensured isolation from the real LAN, making it safe to analyze and share scan results publicly (e.g., on GitHub).
 
+---
 
