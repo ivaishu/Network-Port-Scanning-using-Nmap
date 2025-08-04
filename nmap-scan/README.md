@@ -136,4 +136,16 @@ The TCP SYN scan (`nmap -sS 10.0.2.0/24`) was executed across the NAT network in
 - **All 1000 default TCP ports returned:** `closed`
 - Indicates no services were listening or reachable on the common ports scanned.
 - Could be due to firewall settings or minimal service configuration.
+---
+## ✅ Conclusion 
+
+This task demonstrated fundamental network reconnaissance skills using Nmap and Wireshark in a controlled virtual lab setup. The TCP SYN scan successfully identified active hosts and services running within the VirtualBox NAT network.
+
+### 🔍 Key Findings:
+
+- The **Debian VM** was hosting multiple services (`FTP`, `HTTP`, and `EtherNet/IP`) — highlighting typical attack surfaces in networked systems.
+- The **Windows 7 VM** returned all ports as closed, likely due to strict firewall rules or limited active services.
+- **Wireshark** validated the behavior of a SYN scan by capturing SYN, SYN-ACK, and RST packets — showcasing the low-noise nature of half-open scanning.
+- Using a **NAT Network** ensured isolation from the real LAN, making it safe to analyze and share scan results publicly (e.g., on GitHub).
+
 
